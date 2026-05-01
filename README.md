@@ -1,5 +1,3 @@
-
-
 # TelecomX - Parte 2
 
 Este repositório contém a segunda etapa do projeto de análise de Churn, focada na construção de modelos de Machine Learning e na definição de estratégias de retenção baseadas em dados.
@@ -15,14 +13,18 @@ Este repositório contém a segunda etapa do projeto de análise de Churn, focad
 - **Modelos**: KNN, Regressão Logística, Decision Tree e Random Forest.
 - **Métricas de Avaliação**: Acurácia, Precisão, Recall, F1-Score e Matriz de Confusão.
 - **Ajuste de Hiperparâmetros**: Controle de `max_depth` e `min_samples_leaf` para mitigar overfitting.
+- **Pipeline Correto**: Split → SMOTE → Normalização, garantindo isolamento total do conjunto de teste e ausência de data leakage.
 
 ## 📊 Resultados dos Modelos
-| Modelo | Acurácia (Teste) | Status |
-| :--- | :---: | :--- |
-| **Random Forest (Ajustado)** | **83.7%** | **Melhor Desempenho** |
-| Regressão Logística | 82.9% | Mais estável |
-| KNN (K=10) | 80.2% | Bom Recall |
-| Decision Tree (Ajustada) | 78.1% | Generalização básica |
+
+| Modelo | Acurácia (Teste) | Melhor Métrica | Status |
+| :--- | :---: | :---: | :--- |
+| **KNN (K=10)** | **75%** | Acurácia | **Maior Acurácia Geral** |
+| Random Forest (Ajustado) | 74% | F1-Score (59%) | Melhor Equilíbrio Precisão/Recall |
+| Regressão Logística | 59% | Recall (87%) | Mais conservador na detecção |
+| Decision Tree (Ajustada) | 59% | Recall (73%) | Generalização básica |
+
+> **Nota:** Para problemas de churn, o **F1-Score** é a métrica mais relevante, pois equilibra a identificação correta de clientes que vão cancelar com a minimização de falsos alarmes. Por isso, o **Random Forest** é o modelo mais indicado para uso em produção, apesar do KNN ter maior acurácia geral.
 
 ## 💡 Principais Insights
 - **Contratos Mensais**: Representam o maior risco de churn.
